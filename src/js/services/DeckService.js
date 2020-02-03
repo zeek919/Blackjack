@@ -10,10 +10,10 @@ class DeckService {
         this.cardValue = null;
     }
 
-    async getDeck() {
+    async deckData() {
         try {
             const getDeck = await axios.get(SINGLE_DECK_URL);
-            this.deckId = await getDeck.data.deck_id;
+            this.deckId = getDeck.data.deck_id;
         } catch (err) {
             // eslint-disable-next-line no-console
             console.log(err);
