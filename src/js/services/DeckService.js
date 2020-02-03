@@ -42,8 +42,8 @@ class DeckService {
             const currentCardImage = getCard.data.cards[0].image;
             this.remainigCard = await getCard.data.remaining;
             this.cardValue = specialCardValueChanger(getCard.data.cards[0].value);
-            showCard(currentCardImage);
             this.correctCardStatus(getCard.data.cards[0].value);
+            showCard(currentCardImage);
         } catch (err) {
             // eslint-disable-next-line no-console
             console.log(err);
