@@ -1,12 +1,11 @@
-const buttonLocker = flag => {
-    const EVERY_BTN = document.querySelectorAll('button');
-
-    if (flag === true) {
-        EVERY_BTN.forEach(item => {
+/* eslint-disable no-param-reassign */
+const buttonLocker = (flag, elements) => {
+    if (flag) {
+        elements.forEach(item => {
             item.disabled = true;
         });
     } else {
-        EVERY_BTN.forEach(item => {
+        elements.forEach(item => {
             item.disabled = false;
         });
     }

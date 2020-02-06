@@ -1,10 +1,11 @@
 import { BOT_CARD_SUMMARY } from '../constants/matchInfo';
-import { BLACKJACK } from '../constants/importantNumbers';
+import { BLACK_VALUE } from '../constants/importantNumbers';
 import { specialCardValueChanger, cardValueAdder } from '../helpers';
 
 class BotPlayerService {
     constructor(deckService) {
         this.deckService = deckService;
+        this.cardStaus = this.deckService.cardStatus;
         this.cardPropability = {};
         this.drawedCard = null;
         this.currentResult = null;
@@ -22,7 +23,7 @@ class BotPlayerService {
         const cardPropability = { 11: 0 };
         const cardInGame = this.deckService.remainigCard;
 
-        Object.keys(this.deckService.cardStatus).forEach(card => {
+        Object.keys(this.cardStaus).forEach(card => {
             const singlePropability = parseFloat(
                 (this.deckService.cardStatus[card] * 100) / cardInGame
             ).toFixed(2);
@@ -46,7 +47,7 @@ class BotPlayerService {
     }
 
     nextDrawChance() {
-        const valueToWin = BLACKJACK - this.currentResult;
+        const valueToWin = BLACK_VALUE - this.currentResult;
         Object.keys(this.cardPropability).forEach(item => {
             if (item <= valueToWin) {
                 this.winChance += Number.parseFloat(this.cardPropability[item]);

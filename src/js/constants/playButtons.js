@@ -1,2 +1,3 @@
-export const GET_CARD_BTN = document.querySelector('#get-card');
-export const PASS_BUTTON = document.querySelector('#pass');
+export const getCardBtn = document.querySelector('#get-card');
+export const passButton = document.querySelector('#pass');
+export const everyButtons = document.querySelectorAll('button');
