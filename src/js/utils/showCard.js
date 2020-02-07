@@ -1,7 +1,7 @@
-import { CARD_TABLE } from '../constants/matchInfo';
+import { cardTable } from '../constants/matchInfo';
 
 const showCard = image => {
-    CARD_TABLE.innerHTML = `
+    cardTable.innerHTML = `
     <img src="${image}">`;
 };
 
