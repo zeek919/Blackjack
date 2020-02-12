@@ -1,0 +1,57 @@
+@import 'variables.scss';
+
+main {
+    position: relative;
+    overflow: hidden;
+
+    img {
+        margin-left: 50%;
+        transform: translateX(-50%);
+        width: 1200px;
+
+        @include for-desktop-up {
+            margin-top: -5%;
+        }
+    }
+}
+
+.card-place {
+    background-image: url('../images/card-places.png');
+    background-repeat: no-repeat;
+    background-size: 1300px;
+    background-position: 50% 100%;
+    min-height: 300px;
+    border-top: 1px solid rgb(56, 94, 47);
+
+    img {
+        width: 200px;
+        height: 300px;
+    }
+
+    @include for-desktop-up {
+        min-height: 600px;
+        background-position-y: -10em;
+        background-size: cover;
+    }
+}
+
+.match-result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: inset 0px 4px 50px rgba(0, 0, 0, 0.25);
+    height: 6vh;
+    width: 80%;
+    margin: 5% auto 2.5% auto;
+}
+
+.win {
+    color: yellow;
+    font-family: $font-light;
+}
+
+.lose {
+    color: red;
+    font-family: $font-light;
+}

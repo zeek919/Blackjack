@@ -1,9 +1,10 @@
-import { BOT_CARD_SUMMARY } from '../constants/matchInfo';
+import { botCardSummary } from '../constants/matchInfo';
 import { BLACK_VALUE } from '../constants/importantNumbers';
 import { specialCardValueChanger, cardValueAdder } from '../helpers';
 
 class BotPlayerService {
-    constructor(deckService) {
+    constructor(deckService, matchService) {
+        this.matchService = matchService;
         this.deckService = deckService;
         this.cardStaus = this.deckService.cardStatus;
         this.cardPropability = {};
@@ -11,7 +12,7 @@ class BotPlayerService {
         this.currentResult = null;
     }
 
-    init() {
+    async init() {
         this.currentResult = 0;
         this.deckService.cardValue = 0;
         this.winChance = 0;
@@ -30,7 +31,7 @@ class BotPlayerService {
             cardPropability[card] = singlePropability;
 
             const translatedCard = specialCardValueChanger(card);
-            if (typeof translatedCard === typeof 1) {
+            if (typeof translatedCard === typeof Number) {
                 const parsedTranslatedValue = Number.parseFloat(cardPropability[translatedCard]);
                 const parsedCardValue = Number.parseFloat(cardPropability[card]);
                 const result = parsedTranslatedValue + parsedCardValue;
@@ -56,13 +57,20 @@ class BotPlayerService {
     }
 
     drawAction() {
+        let IS_FINAL_RESULT = false;
         const draw = window.setInterval(async () => {
             await this.deckService.getCard();
             this.currentResult += parseInt(this.deckService.cardValue, 10);
             this.nextDrawChance();
-            cardValueAdder(this.deckService.cardValue, BOT_CARD_SUMMARY);
-            if (this.winChance <= 50) {
+            cardValueAdder(this.deckService.cardValue, botCardSummary);
+            if (this.winChance <= 30) {
+                IS_FINAL_RESULT = true;
                 clearInterval(draw);
+            }
+
+            if (IS_FINAL_RESULT) {
+                this.matchService.setBotCardValue(botCardSummary.textContent);
+                this.matchService.finalResult();
             }
 
             this.winChance = 0;

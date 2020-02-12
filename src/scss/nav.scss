@@ -1,0 +1,115 @@
+@import 'variables.scss';
+@import 'media.scss';
+
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    background-image: url('../images/nav.png');
+    background-position: 100%;
+    background-repeat: no-repeat;
+    margin-top: 1em;
+    padding-bottom: 1em;
+    position: absolute;
+    bottom: 0;
+
+    div {
+        margin-top: 1vh;
+    }
+
+    @include for-desktop-min {
+        height: 150px;
+        flex-direction: row-reverse;
+        background-position: unset;
+    }
+
+    @include for-desktop-up {
+        height: auto;
+        background-position: right 0%;
+        right: 0;
+    }
+}
+
+.money {
+    @include for-desktop-min {
+        margin-right: 50px;
+    }
+    @include for-desktop-up {
+        margin-right: 100px;
+    }
+}
+
+.playbuttons {
+    margin-top: 1.1vh;
+
+    @include for-desktop-min {
+        display: flex;
+        justify-content: right;
+
+        button {
+            width: 20vw;
+            margin-right: 1em;
+        }
+    }
+}
+
+.rate-menu {
+    @include for-desktop-min {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        margin-right: 2em;
+
+        button {
+            margin: 0.5em;
+        }
+    }
+}
+
+.card-table {
+    @include for-desktop-min {
+        position: relative;
+        margin-top: 10%;
+    }
+}
+
+.rate-btn {
+    font-family: $font-light;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: black;
+    padding: 5px 15px;
+    color: white;
+}
+
+.rate-btn:disabled {
+    background-color: #800000;
+}
+
+.get-btn,
+.pass-btn {
+    font-family: $font-light;
+    border: none;
+    border-radius: 10px;
+    height: 10vh;
+    width: 40vw;
+    font-size: 18px;
+    color: white;
+}
+
+.get-btn {
+    background: rgb(64, 121, 63);
+    background: linear-gradient(0deg, rgba(64, 121, 63, 1) 49%, rgba(48, 86, 45, 1) 50%);
+}
+
+.pass-btn {
+    background: rgb(126, 66, 58);
+    background: linear-gradient(0deg, rgba(126, 66, 58, 1) 49%, rgba(71, 47, 42, 1) 50%);
+}
+
+.get-btn:disabled,
+.pass-btn:disabled {
+    background: rgb(74, 74, 74);
+    background: linear-gradient(0deg, rgba(74, 74, 74, 1) 49%, rgba(43, 43, 43, 1) 50%);
+}

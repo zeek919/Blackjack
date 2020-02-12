@@ -1,5 +1,5 @@
-.card {
-    position: absolute;
-    width: 200px;
-    height: 300px;
-}
+@import 'common.scss';
+@import 'variables.scss';
+@import 'header.scss';
+@import 'cards.scss';
+@import 'nav.scss';
