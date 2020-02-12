@@ -1,5 +1,6 @@
 import { buttonLocker } from '../helpers';
 import { playButtons, passButton, getCardBtn } from '../constants/playButtons';
+import { classToggler } from '../utils';
 import { rateButtons } from '../constants/rateButtons';
 import { BLACK_VALUE } from '../constants/importantNumbers';
 import {
@@ -63,18 +64,22 @@ class MatchService {
     finalResult() {
         if (this.playerCardValue > BLACK_VALUE) {
             this.cashCalculator(false);
+            classToggler('lose', 'win', matchResult);
             matchResult.textContent = 'YOU LOSE';
         } else if (this.playerCardValue < this.botCardValue && this.botCardValue <= BLACK_VALUE) {
             this.cashCalculator(false);
+            classToggler('lose', 'win', matchResult);
             matchResult.textContent = 'YOU LOSE';
         } else if (
             this.playerCardValue > this.botCardValue &&
             this.playerCardValue <= BLACK_VALUE
         ) {
             this.cashCalculator(true);
+            classToggler('win', 'lose', matchResult);
             matchResult.textContent = 'YOU WIN';
         } else if (this.botCardValue > BLACK_VALUE) {
             this.cashCalculator(true);
+            classToggler('win', 'lose', matchResult);
             matchResult.textContent = 'YOU WIN';
         }
 

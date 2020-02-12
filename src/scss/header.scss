@@ -1,0 +1,39 @@
+@import 'variables.scss';
+header {
+    padding: 1em 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: rgb(56, 94, 47);
+    background: linear-gradient(0deg, rgba(56, 94, 47, 1) 0%, rgba(42, 61, 42, 1) 100%);
+    text-align: center;
+
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    p {
+        margin: 0;
+    }
+}
+
+.titles {
+    font-size: 14px;
+    font-family: $font-bold;
+    color: #9e9e9e;
+}
+
+.math-values {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+    width: 60px;
+    height: 40px;
+    border-radius: 5px;
+    font-family: $font-light;
+    background-color: #4c7748;
+    color: white;
+}
